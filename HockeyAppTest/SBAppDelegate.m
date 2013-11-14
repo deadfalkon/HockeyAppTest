@@ -18,13 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifdef CONFIGURATION_Release
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"01cf9dd40912a43579e98c09f05f1369"
                                                            delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
     
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
+    NSLog(@"HockeyApp.net SDK should be initiated");
+#endif
     return YES;
+
 }
 
 @end
